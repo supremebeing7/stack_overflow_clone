@@ -28,9 +28,12 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answers_params)
     if @answer.save
-      redirect_to(root_path)
+      respond_to do |format|
+        format.html { redirect_to question_path(@answer.question) }
+        format.js
+      end
     else
-      render 'new'
+      redirect_to :back, notice: "Errors in your answer"
     end
   end
 
@@ -43,6 +46,6 @@ class AnswersController < ApplicationController
 private
 
   def answers_params
-    params.require(:answer).permit(:question_id, :content, :best)
+    params.require(:answer).permit(:user_id, :question_id, :content, :best)
   end
 end

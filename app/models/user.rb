@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :password, presence: true
+  has_many :questions
+  has_many :answers
 
   before_create { generate_token(:auth_token) }
 

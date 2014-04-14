@@ -1,0 +1,11 @@
+<%= render 'layouts/errors', object: @answer %>
+
+
+<%= form_for @answer do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, cols: 60, rows: 10, placeholder: "Content" %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>

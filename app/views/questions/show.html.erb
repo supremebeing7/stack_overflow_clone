@@ -4,5 +4,5 @@
 
 <p><%= @question.content %></p>
 
-<p><%= link_to "Answer this Question", new_answer_path %></p>
+<p><%= link_to "Answer this Question", new_answer_path, id: "new_answer", remote: true %></p>
 
