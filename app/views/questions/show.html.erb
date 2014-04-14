@@ -5,10 +5,16 @@
 
 <p><%= @question.content %></p>
 
-
 <ul id="answers">
   <% @question.answers.each do |answer| %>
-    <li><%= answer.content %></li>
+    <% if current_user.id == @question.user_id %>
+      <%= form_for answer, url: question_answer_path(@question, answer), method: "patch" do |f| %>
+        <button name="answer[best]", value="true", class="glyphicon glyphicon-ok pull-left", id="checkbutton"></button>
+      <% end %>
+    <% end %>
+      <li>
+      <%= answer.content %>
+    </li>
   <% end %>
 </ul>
 
