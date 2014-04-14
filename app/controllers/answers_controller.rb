@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
 
   def new
     @answer = Answer.new
+    @question = Question.find(params[:question_id])
   end
 
   def edit
@@ -26,15 +27,15 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(answers_params)
-    if @answer.save
+    @answer = Answer.create(answers_params)
+    # if @answer.save
       respond_to do |format|
         format.html { redirect_to question_path(@answer.question) }
         format.js
       end
-    else
-      redirect_to :back, notice: "Errors in your answer"
-    end
+    # else
+    #   redirect_to :back, notice: "Errors in your answer"
+    # end
   end
 
   def destroy
