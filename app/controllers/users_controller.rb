@@ -25,8 +25,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(users_params)
-    redirect_to(root_path)
+    @user = User.new(users_params)
+    if @user.save
+      flash[:notice] = "User created!"
+      redirect_to(root_path)
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -38,6 +43,6 @@ class UsersController < ApplicationController
 private
 
   def users_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end
