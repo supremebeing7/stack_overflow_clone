@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(questions_params)
+    @question = Question.new(questions_params)
     if @question.save
       redirect_to(root_path)
     else
@@ -43,6 +43,6 @@ class QuestionsController < ApplicationController
 private
 
   def questions_params
-    params.require(:question).permit(:content, :user_id)
+    params.require(:question).permit(:title, :content, :user_id)
   end
 end

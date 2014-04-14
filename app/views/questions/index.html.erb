@@ -1,0 +1,9 @@
+<%= content_for :title, "All Questions" %>
+
+<h1>All Questions</h1>
+
+<ol>
+<% @questions.each do |q| %>
+  <li><%= link_to q.title, question_path(q) %></li>
+<% end %>
+</ol>

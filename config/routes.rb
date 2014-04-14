@@ -1,5 +1,5 @@
 StackOverflowClone::Application.routes.draw do
-  root to: 'users#index'
+  root to: 'questions#index'
   resources :sessions
   resources :users
   resources :questions

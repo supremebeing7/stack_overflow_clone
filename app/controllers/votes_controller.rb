@@ -26,7 +26,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create(votes_params)
+    @vote = Vote.new(votes_params)
     if @vote.save
       redirect_to(root_path)
     else
