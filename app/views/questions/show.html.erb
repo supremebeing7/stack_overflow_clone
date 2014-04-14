@@ -1,0 +1,8 @@
+<%= content_for :title, @question.title %>
+
+<h1><%= @question.title %></h1>
+
+<p><%= @question.content %></p>
+
+<p><%= link_to "Answer this Question", new_answer_path %></p>
+
