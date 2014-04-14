@@ -19,6 +19,11 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
+      if params[:answer][:best]
+        @answer.question.answers.each do |answer|
+          answer.update(best: false)
+        end
+      end
     if @answer.update(answers_params)
       redirect_to question_path(@answer.question)
     else
