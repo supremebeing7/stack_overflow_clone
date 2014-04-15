@@ -1,0 +1,14 @@
+<% j if !current_user.nil? && current_user.id == @question.user_id %>
+  <%= j form_for answer, url: question_answer_path(@question, answer), method: "patch" do |f| %>
+    $('#answers').append('<button name="answer[best]", value="true", class="glyphicon glyphicon-ok pull-left", id="checkbutton"></button><li><%= @answer.content %></li>');
+  <% j end %>
+<% j else %>
+  $('#answers').append('<li><%= @answer.content %></li>');
+<% j end %>
+
+
+
+
+<%= form_for answer, url: question_answer_path(@answer.question, answer), method: "patch" do |f| %>
+      <button name="answer[best]", value="true", class="glyphicon glyphicon-ok pull-left", id="checkbutton"></button>
+    <% end %>

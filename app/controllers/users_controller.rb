@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.save
+      cookies[:auth_token] = @user.auth_token
       flash[:notice] = "User created!"
       redirect_to(root_path)
     else

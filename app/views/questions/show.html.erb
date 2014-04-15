@@ -8,7 +8,7 @@
 
 <ul id="answers">
   <% @question.answers.order(best: :desc).each do |answer| %>
-    <% if current_user.id == @question.user_id %>
+    <% if !current_user.nil? && current_user.id == @question.user_id %>
       <%= form_for answer, url: question_answer_path(@question, answer), method: "patch" do |f| %>
         <button name="answer[best]", value="true", class="glyphicon glyphicon-ok pull-left", id="checkbutton"></button>
       <% end %>

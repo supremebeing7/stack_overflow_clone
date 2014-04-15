@@ -1,3 +1,12 @@
 $('#new_answer_form').remove();
 $('#new_answer').show();
-$('#answers').append('<li><%= @answer.content %></li>');
+
+<% if current_user && current_user == @answer.question.user %>
+
+  $('#answers').append('<button name="answer[best]", value="true", class="glyphicon glyphicon-ok pull-left", id="checkbutton"></button><li><%= @answer.content %></li>');
+
+<% else %>
+
+  $('#answers').append('<li><%= @answer.content %></li>');
+
+<% end %>

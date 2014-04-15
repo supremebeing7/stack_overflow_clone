@@ -25,4 +25,19 @@ describe User do
       page.should have_content "Logged in!"
     end
   end
+  context 'asking questions' do
+    it 'allows a user to submit a question' do
+      ask_a_question
+      page.should have_content "Question added!"
+    end
+  end
+  context 'answering questions' do
+    it 'should allow a user to answer a question', js: true do
+      ask_a_question
+      click_link @title
+      click_link "Answer this Question"
+      fill_in "Content", with: "YEEEeeeeeeaaaahahaherhfbrjegbfkjwebgkblasfdbsafkebngklv;web gklvw lfj ewkl;fgewkl g;lwe her'g;erw"
+      click_button "Submit"
+    end
+  end
 end
